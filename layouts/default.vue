@@ -1,12 +1,12 @@
 <template>
   <v-app dark>
     <div>
-      <v-app-bar color="yellow" flat>
+      <v-app-bar color="#FFFFFF" flat>
         <v-container>
         <v-img
             class="mx-2"
             src="/logo.png"
-            max-height="150"
+            max-height="130"
             max-width="150"
             contain
           ></v-img>
@@ -50,3 +50,13 @@ export default {
   },
 }
 </script>
+
+
+<style scoped>
+body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+</style>
