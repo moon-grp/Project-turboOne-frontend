@@ -13,17 +13,17 @@
             @click:append-outer="shenkAm"
             v-model="longLink"
           ></v-text-field>
-          <v-expand-transition>
-            <v-alert
-              prominent
-              text
-              color="#6C63FF"
-              :value="alert"
-              transition="expand-transition"
-            >
-              {{ shortLink }}
-            </v-alert>
-          </v-expand-transition>
+
+          <v-alert
+            :dismissible="dissmiss"
+            prominent
+            text
+            color="#6C63FF"
+            :value="alert"
+            transition="expand-transition"
+          >
+            {{ shortLink }}
+          </v-alert>
         </div>
       </v-row>
     </v-container>
@@ -33,29 +33,37 @@
 <script>
 import axios from 'axios'
 export default {
+  layout: 'shenkLayout',
   data() {
     return {
       shortLink: '',
-      longLink: '',
+      longLink: null,
       alert: false,
       expand: false,
+      dissmiss: false,
     }
   },
   methods: {
     async shenkAm() {
-      try {
-        const ip = await this.$axios.$post(
-          'https://shenkess.herokuapp.com/shenkam',
-          {
-            longUrl: this.longLink,
-          }
-        )
-        // console.log(ip.shortUrl)
-        this.expand = true
+      if (this.longLink != null) {
+        try {
+          const ip = await this.$axios.$post(
+            'https://shenkess.herokuapp.com/shenkam',
+            {
+              longUrl: this.longLink,
+            }
+          )
+
+          this.expand = true
+          this.alert = true
+          this.shortLink = ip.shortUrl
+        } catch (error) {
+          console.log(error)
+        }
+      } else {
+        this.dissmiss = true
         this.alert = true
-        this.shortLink = ip.shortUrl
-      } catch (error) {
-        console.log(error)
+        this.shortLink = 'Aboii, enter link wey you wan shenk na.'
       }
     },
   },
