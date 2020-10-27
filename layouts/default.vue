@@ -3,7 +3,7 @@
     <div>
       <v-app-bar color="#FFFFFF" flat>
         <v-container>
-        <v-img
+          <v-img
             class="mx-2"
             src="/logo.png"
             max-height="130"
@@ -11,15 +11,19 @@
             contain
           ></v-img>
         </v-container>
+        <v-spacer></v-spacer>
+        <nuxt-link to="/shenkess">
+        <v-btn rounded color="#6C63FF" dark outlined class="text-capitalize">shenk-am</v-btn>
+        </nuxt-link>
       </v-app-bar>
       <v-main>
         <v-container>
           <nuxt />
         </v-container>
       </v-main>
-
-     
     </div>
+
+    
   </v-app>
 </template>
 
@@ -51,12 +55,15 @@ export default {
 }
 </script>
 
-
 <style scoped>
-body{
+body {
   width: 100vw;
   height: 100vh;
   margin: 0;
   overflow: hidden;
+}
+
+a{
+  text-decoration: none;
 }
 </style>

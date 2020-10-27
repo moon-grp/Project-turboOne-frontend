@@ -4,10 +4,11 @@
       <v-col cols="12" sm="8" md="6">
         <v-container>
           <div>
-            <p class="text-center text-capitalize text ">Vibes and <span class="subtext">inshallah /ɪnˈʃalə/</span></p>
+            <p class="text-center text-capitalize text pt-4">Vibes and <span class="subtext">inshallah /ɪnˈʃalə/</span></p>
           </div>
           <div class="mt-16 bg" >
-            <img src="/share_link.svg" />
+             <img src="/share_link.svg?inline">
+           <!-- <img src="/share_link.svg" /> -->
           </div>
         </v-container>
       </v-col>
