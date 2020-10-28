@@ -24,6 +24,17 @@
           >
             {{ shortLink }}
           </v-alert>
+
+          <v-alert
+            :dismissible="dissmissErr"
+            prominent
+            text
+            color="error"
+            :value="alertErr"
+            transition="expand-transition"
+          >
+            {{ errorMsg }}
+          </v-alert>
         </div>
       </v-row>
     </v-container>
@@ -41,6 +52,9 @@ export default {
       alert: false,
       expand: false,
       dissmiss: false,
+      errorMsg: null,
+      alertErr: false,
+      dissmissErr: false,
     }
   },
   methods: {
@@ -58,7 +72,10 @@ export default {
           this.alert = true
           this.shortLink = ip.shortUrl
         } catch (error) {
-          console.log(error)
+          console.log(error.response)
+          this.errorMsg = error.response.data.message
+          this.dissmissErr = true
+          this.alertErr = true
         }
       } else {
         this.dissmiss = true
